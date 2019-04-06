@@ -1,4 +1,4 @@
 Hello, World!
 
-Test SSM Build periodically
+Test SSM GitHub hook trigger for GITScm polling
 
