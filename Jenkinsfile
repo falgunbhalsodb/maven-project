@@ -44,7 +44,7 @@ pipeline {
         stage ('prod') {
             steps {
                 echo "This is Prod Stage"
-                timeout(time: 60, unit: 'NANOSECONDS') {
+                timeout(time: 60, unit: 'SECONDS') {
                     input 'Do you want to process to Prod'
                     }
                     build 'pro deploy'
