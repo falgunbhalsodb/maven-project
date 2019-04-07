@@ -14,6 +14,8 @@ pipeline {
             }
             post {
                 success {
+                    echo "Download code form Git"    
+                    git 'https://github.com/falgunbhalsodb/maven-project.git'
                     echo "Archive Artifacts"
                     archive '**/*.war'
                     echo "Publish junit report"
@@ -29,11 +31,23 @@ pipeline {
             steps {
                 echo "This is Dev-deploy stage"
             }
+            post {
+                success {
+                    echo "Build Project"
+                    build 'Deploy_dev'
+                    
+
+                }
+            }
         }
 
         stage ('prod') {
             steps {
                 echo "This is Prod Stage"
+                timeout(time: 60, unit: 'NANOSECONDS') {
+                    input 'Do you want to process to Prod'
+                    }
+                    build 'pro deploy'
             }
         } 
     }
