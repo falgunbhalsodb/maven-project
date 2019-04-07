@@ -1,18 +1,19 @@
 pipeline {
-    agent any
-    stages {
-        {
-            tools
+    agent any 
+    tools {
                 jdk "java8"
                 maven "maven3.3.9"
-        }
+    }
+    stages {
+                 
+        
         stage ('build') {
             steps {
                 echo "This is Build stage"
                 sh label: '', script: 'mvn clean package checkstyle:checkstyle' 
             }
             post {
-                sucess {
+                success {
                     echo "Archive Artifacts"
                     archive '**/*.war'
                     echo "Publish junit report"
