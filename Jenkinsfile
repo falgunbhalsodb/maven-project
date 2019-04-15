@@ -34,7 +34,7 @@ pipeline {
             post {
                 success {
                     echo "Build Project"
-                    build 'Deploy_dev'
+                    build 'Deploy-Dev'
                     
 
                 }
@@ -47,7 +47,7 @@ pipeline {
                 timeout(time: 60, unit: 'SECONDS') {
                     input 'Do you want to process to Prod'
                     }
-                    build 'pro deploy'
+                    build 'Deploy-Prod'
             }
         } 
     }
