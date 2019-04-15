@@ -34,7 +34,9 @@ pipeline {
             post {
                 success {
                     echo "Build Project"
-                    build 'Deploy-Dev'
+                    copyArtifacts fingerprintArtifacts: true, projectName: 'Deploy-Dev', selector: lastSuccessful()
+                    archiveArtifacts '**/*.war'
+                    build 'Deploy-Prod'
                     
 
                 }
